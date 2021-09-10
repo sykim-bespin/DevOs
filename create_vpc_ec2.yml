@@ -22,7 +22,7 @@
 
     - name: Create Public Subnet
       ec2_vpc_subnet:
-        cidr: 10.1.0.0/24
+        cidr: 10.10.0.0/24
         vpc_id: "{{ vpc_result.vpc.id }}"
         region: ap-northeast-1
         az: ap-northeast-1a
