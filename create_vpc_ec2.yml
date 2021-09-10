@@ -7,7 +7,7 @@
     - name: Create VPC
       ec2_vpc_net:
         name: Test VPC
-        cidr_block: 10.1.0.0/16
+        cidr_block: 10.10.0.0/16
         region: ap-northeast-1
         state: present
       register: vpc_result
@@ -39,13 +39,13 @@
         
     - name: Create Security Group
       ec2_group:
-        name: default sg
+        name: demo sg devos
         vpc_id: "{{ vpc_result.vpc.id }}"
         region: ap-northeast-1
         state: present
-        description: allow 22, 80
+        description: allow 22, 80 devos 
         tags:
-          Name: default sg
+          Name: demo sg devos
         rules:
         - proto: tcp
           ports:
