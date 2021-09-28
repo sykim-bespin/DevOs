@@ -51,7 +51,7 @@
 
     - name: Create EC2
       ec2:
-        key_name: sykim-tokyo-keypair
+        key_name: sykim-sydney-keypair
         instance_tags:
           Name: devos-demo-ec2
         region: ap-southeast-2
