@@ -1,4 +1,9 @@
 ---
+- hosts: targetServer
+  gather_facts: False
+  become: true
+  become_method: sudo
+  
 - name: Host Info Facts
   command: "{{ command }}"
   register: host_info
