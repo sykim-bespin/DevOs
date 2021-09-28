@@ -18,7 +18,7 @@
         region: ap-southeast-2
         state: present
         tags:
-          Name: DevOS_DEMO_tokyo_igw
+          Name: DevOS_DEMO_sydney_igw
 
     - name: Create Public Subnet
       ec2_vpc_subnet:
