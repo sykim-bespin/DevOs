@@ -18,4 +18,3 @@
           monitoring: no
           vpc_subnet_id: subnet-07e6775dad8f6950f
           assign_public_ip: yes
-        register: ec2
