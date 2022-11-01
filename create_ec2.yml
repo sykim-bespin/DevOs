@@ -1,11 +1,12 @@
 ---
 - connection: local
+  hosts: targetServer
   gather_facts: false
   tasks:
     - name: Create EC2 Block
       ec2:
           region: ap-northeast-1
-          key_name: sangyun-tokyo-keypair 
+          key_name: sykim-tokyo-keypair 
           group: sg-074951cab14fbda34
           instance_type: t2.micro
           image: ami-0de5311b2a443fb89
