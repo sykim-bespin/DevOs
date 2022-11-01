@@ -15,6 +15,7 @@
     
     - name: update apt package
       shell: "apt-get update"
+      become: yes
     
     - name: Enable nginx for ubuntu
       shell: "apt-get install -y nginx1.12"
