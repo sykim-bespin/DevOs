@@ -18,5 +18,5 @@
       become: yes
     
     - name: Enable nginx for ubuntu
-      shell: "apt-get install -y nginx1.12"
+      shell: "apt-get install -y nginx"
       become: yes
