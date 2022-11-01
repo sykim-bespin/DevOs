@@ -4,7 +4,7 @@
   gather_facts: false
   tasks:
     - name: Create EC2 Block
-      amazon.aws.ec2_instance:
+      ec2:
           region: ap-northeast-1
           key_name: sangyun-tokyo-keypair 
           group: devos-demo-sg
