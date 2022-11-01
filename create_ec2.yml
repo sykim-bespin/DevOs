@@ -1,5 +1,6 @@
 ---
 - connection: local
+  hosts: localhost
   gather_facts: false
   tasks:
     - name: Create EC2 Block
