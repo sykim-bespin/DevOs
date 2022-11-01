@@ -1,10 +1,9 @@
 ---
-- name: Create Ec2 instances
-  hosts: localhost
+- connection: local
   gather_facts: false
   tasks:
     - name: Create EC2 Block
-      ec2: 
+      amazon.aws.ec2_instance:
           region: ap-northeast-1
           key_name: sangyun-tokyo-keypair 
           group: devos-demo-sg
