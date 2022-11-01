@@ -1,19 +1,39 @@
 ---
-- hosts: localhost
-  connection: local
-  become: yes
-
+- name: Create Ec2 instances
+  hosts: localhost
+  gather_facts: false
   tasks:
-    - name: Create EC2
-      ec2:
-        key_name: sangyun-tokyo-keypair
-        instance_tags:
-          Name: devos-demo-ec2
-        region: ap-northeast-1
-        instance_type: t2.micro
-        image: ami-0de5311b2a443fb89
-        group: devos-demo-sg
-        wait: yes
-        count: 1
-        vpc_subnet_id: subnet-07e6775dad8f6950f
-        assign_public_ip: yes
+  # Block is a Group of Tasks combined together
+  - name: Get Info Block
+    block: 
+      - name: Get Running instance Info
+        
+        ec2_instance_info:
+        register: ec2info 
+      - name: Print info
+        debug: var="ec2info.instances"
+             
+    # By specifying always on the tag, 
+    # I let this block to run all the time by module_default
+    # this is for security to net create ec2 instances accidentally
+    tags: ['always', 'getinfoonly']
+  - name: Create EC2 Block
+    block: 
+      - name: Launch ec2 instances
+        tags: create_ec2
+        ec2:
+          region: ap-northeast-1
+          key_name: sangyun-tokyo-keypair 
+          group: devos-demo-sg
+          instance_type: t2.micro
+          image: ami-0de5311b2a443fb89
+          wait: yes
+          count: 1
+          instance_tags:
+            name: devos_ec2
+            os: amazon_linux
+          monitoring: no
+          vpc_subnet_id: subnet-07e6775dad8f6950f
+          assign_public_ip: yes
+        register: ec2
+        delegate_to: localhost
